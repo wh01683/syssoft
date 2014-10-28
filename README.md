@@ -1,4 +1,4 @@
-syssoft2014
+syssoft
 ===========
 
 Repository for System Software Fall 2014 semester project; group 1.
