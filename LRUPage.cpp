@@ -1,6 +1,8 @@
 #include "Page.cpp"
-
+#include <cstdio>
+#include <ctime>
 using namespace std;
+std::clock_t start;
 /**
 * Implementation of a virtual memory page for the Least Recently Used algorithm (LRU).
 * This class extends the Page class.
@@ -12,8 +14,11 @@ using namespace std;
 *
 */
 class LRUPage : public Page{
+
 private:
     bool marked;
+    long age = std::clock();
+
 public:
     LRUPage(){
         marked = true;
@@ -27,4 +32,9 @@ public:
     void unmark(void){
         marked=false;
     }
+
+    void setAge(long newAge){age = newAge;};
+
+    long getAge(){return age;};
+
 };
