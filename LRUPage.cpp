@@ -15,7 +15,7 @@ class LRUPage : public Page{
 private:
     bool marked;
 public:
-    LRUPage(string name) : Page(name){
+    LRUPage(){
         marked = true;
     }
     bool isMarked(void){
