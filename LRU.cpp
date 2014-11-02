@@ -39,8 +39,7 @@ int increment;
 int oldestIndex;
 LRUPage oldest;
 
-
-        for (increment = 1; increment < LRUTableSize; increment){
+        for (increment = 1; increment < LRUTableSize; increment++){
 
             if(LRUTable[increment].getAge() < minAge){
             oldest = LRUTable[increment];
@@ -70,9 +69,10 @@ int inc;
                 }
             }
             cout << "Page fault looking for: " << page << endl;
-            LRUTable[getOldest()].setName(page);
-            cout << "Added " << page << " to " << getOldest() << " : " << LRUTable[getOldest()].getName() << endl;
-            LRUTable[getOldest()].setAge(std::clock());
+            int oldestPage = getOldest(LRUTable);
+            LRUTable[oldestPage].setName(page);
+            cout << "Added " << page << " to " << oldestPage << " : " << LRUTable[oldestPage].getName() << endl;
+            LRUTable[oldestPage].setAge(std::clock());
             return false;
 }
 
