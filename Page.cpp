@@ -1,4 +1,6 @@
 #include <string>
+#ifndef PAGE_CPP
+#define PAGE_CPP
 using namespace std;
 
 /**
@@ -10,7 +12,9 @@ using namespace std;
 * -- func isSet()               : Helper method to check whether the Page has been given a value yet.
 *
 */
+
 class Page{
+
     private:
         char pageName;
 
@@ -25,3 +29,5 @@ class Page{
             return pageName != '\0';
         }
 };
+
+#endif
