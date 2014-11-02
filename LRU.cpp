@@ -3,12 +3,20 @@
 #include <time.h>
 using namespace std;
 /**
-Implementation of the Least Recently Used (LRU) algorithm used in virtual page replacement. The algorithm operates on the assumption
-that a page's history of use may determine its future of use.
+Abstract: Implementation of the Least Recently Used (LRU) algorithm used in virtual page replacement. The algorithm operates 
+on the assumption that a page's history of use may determine its future of use.
 
 -- LRUTableSize             : value to keep track of the page table's size
 -- LRUTable                 : pointer to an LRUPage object; used in construction of page tables
--- func
+-- func getOldest           : Checks the table for the oldest page based on the age set during construction and
+                              during page replacement. The function utilizes a minimum finding method and returns the
+                              table index of the oldest page found. Finds oldest based on the minimum age value based
+                              on the fact that time is incremental and grows larger with age; hence, the lowest age value
+                              is also the oldest
+-- func checkForPage        : checks the table for the page required. If the required page is not in the table, AND
+                              there is space in the table, the function will place the required page in an empty spot.
+                              If the table is already full, the function then checks the table for the oldest page 
+                              using the getOldest method and will replace the oldest page with the page required.
 
 
 */
