@@ -21,3 +21,5 @@ Conventions:
 Editing: Whenever we make an edit, let's try our best to let others know what we did. i.e. what changes were made, what problems were solved/bugs were fixed, etc.
 
 Commenting: We should comment code to make it clear for other users (naturally). However, I believe this is only truly necessary for code we write to follow complex algorithms.
+  Let's use this page as a guideline for documentation: http://www.edparrish.net/common/cppdoc.html
+  
