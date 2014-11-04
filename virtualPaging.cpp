@@ -15,7 +15,7 @@ int main(){
 //    getline(cin,input);
 //    cout << "\nYou entered " <<input << endl;
 
-    string test = "abcdaeabbbeeeeac";
+    string test = "abcdaeabbbeekljhbf1upouasndpconjasdaskldcbneeac";
     int pageFaultCounterLRU = 0;
     int pageFaultCounterFIFO = 0;
 
@@ -24,21 +24,21 @@ int main(){
     FIFO fifo (4);
     string::iterator it;
     for(std::string::size_type i = 0; i < test.size(); ++i) {
-        fifo.checkForPage(test[i]);
         if (fifo.checkForPage(test[i]) == false) pageFaultCounterFIFO ++;
-        }
-cout << pageFaultCounterFIFO << endl;
+        fifo.checkForPage(test[i]);
 
+        }
 
 
 /** Least Recently Used algorithm test area.
 */
-    LRU lru (4);
+    LRU lru(5);
     for(std::string::size_type i = 0; i < test.size(); ++i) {
-        lru.checkForPage(test[i]);
         if (lru.checkForPage(test[i]) == false) pageFaultCounterLRU ++;
-        }
-cout << pageFaultCounterLRU << endl;
+        lru.checkForPage(test[i]);
 
+        }
+cout << "LRU Page Faults: " << pageFaultCounterLRU << endl;
+cout << "FIFO Page Faults: " << pageFaultCounterFIFO << endl;
 
 }//end main method
