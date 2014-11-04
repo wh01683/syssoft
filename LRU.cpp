@@ -3,20 +3,12 @@
 #include <time.h>
 using namespace std;
 /**
-Abstract: Implementation of the Least Recently Used (LRU) algorithm used in virtual page replacement. The algorithm operates 
-on the assumption that a page's history of use may determine its future of use.
+Implementation of the Least Recently Used (LRU) algorithm used in virtual page replacement. The algorithm operates on the assumption
+that a page's history of use may determine its future of use.
 
 -- LRUTableSize             : value to keep track of the page table's size
 -- LRUTable                 : pointer to an LRUPage object; used in construction of page tables
--- func getOldest           : Checks the table for the oldest page based on the age set during construction and
-                              during page replacement. The function utilizes a minimum finding method and returns the
-                              table index of the oldest page found. Finds oldest based on the minimum age value based
-                              on the fact that time is incremental and grows larger with age; hence, the lowest age value
-                              is also the oldest
--- func checkForPage        : checks the table for the page required. If the required page is not in the table, AND
-                              there is space in the table, the function will place the required page in an empty spot.
-                              If the table is already full, the function then checks the table for the oldest page 
-                              using the getOldest method and will replace the oldest page with the page required.
+-- func
 
 
 */
@@ -25,36 +17,30 @@ class LRU{
 
 private:
 int LRUTableSize;
+LRUPage * LRUTable;
 
 public:
-LRUPage *LRUTable;
-
-
 /** Constructor to create a new LRU page table using the LRUPage class, sets age of each page during construction
 @param tableSize size of the page table to be created
 @return LRU new LRU object of size tableSize
 */
-LRU(int tableSize){
-
-LRUTableSize = tableSize;
-LRUTable = new LRUPage[tableSize];
-
-    for (int i = 0; i < tableSize; i++){
-        LRUTable[i].setAge(std::clock());
-
-        }
-
+LRU( int size ){
+LRUTableSize = size;
+LRUTable = new LRUPage[size];
+ //for (int i = 0; i < size; i++){
+ //LRUTable[i].access();}
 }
+
+
+int getSize(){return LRUTableSize;}
 
 /** Obtains the index value of the oldest page in the page table. This is the page to be deleted and replaced
 @param LRUPage object to check the age of
 @return returns the index location value of the oldest page in the page table to be deleted.
 */
-int getOldest(LRUPage *table){
-/*
-*
-*/
-long minAge = table[0].getAge(); //Intitializes minAge value as the age of the first page in the array
+int getOldest(void){
+
+long minAge = LRUTable[0].getAge(); //Intitializes minAge value as the age of the first page in the array
 int increment; //keeps track of current index value
 int oldestIndex; //keeps track of current index of the oldest page
 
@@ -65,6 +51,7 @@ int oldestIndex; //keeps track of current index of the oldest page
             oldestIndex = increment; //sets index tracker to current index
             }
         }
+       return oldestIndex;
 }
 
 /** This is the 'guts' of the LRU algorithm so to speak. This method checks for the required page (in the form of a single
@@ -76,25 +63,34 @@ int oldestIndex; //keeps track of current index of the oldest page
 */
 bool checkForPage(char page){
 
-int inc; //incrementor
 
-    for(inc = 0; inc < LRUTableSize; inc ++){
-        if(!LRUTable[inc].isSet()){ //checks whether the page was set or not
-                    cout << "Empty page at " << inc << " adding page " << page << endl;
-                    LRUTable[inc].setName(page); //sets name of the page at the table's current index to the name of the page replacing it
-                    return false;
-                }
-                if (LRUTable[inc].getName() == page){
-                    cout << "Found page " << page << " at pos " << inc << endl;
-                    return true;
-                }
+            int inc; //incrementor
+            for (int i = 0; i < getSize(); i ++){
+                    if (LRUTable[i].getName() == page){
+                        cout << "Found page " << page << " at pos " << i << endl;
+                        LRUTable[i].access();
+                        return true;
+                        break;
+                    }
             }
+            for(inc = 0; inc < getSize(); inc ++){
+                    if(LRUTable[inc].isSet() != true){ //checks whether the page was set or not
+                        cout << "Empty page at " << inc << " adding page " << page << endl;
+                        LRUTable[inc].setName(page); //sets name of the page at the table's current index to the name of the page replacing it
+                        LRUTable[inc].access(); //sets new age for page at that location
+                        return false;
+                        break;
+                    }
+            }
+
             cout << "Page fault looking for: " << page << endl;
-            int oldestPage = getOldest(LRUTable); //declares new index for oldest page, sets value using getOldest method
-            LRUTable[oldestPage].setName(page); //replaces oldest page with the needed page
-            cout << "Added " << page << " to " << oldestPage << " : " << LRUTable[oldestPage].getName() << endl;
-            LRUTable[oldestPage].setAge(std::clock()); //sets new age for page at that location
+            //declares new index for oldest page, sets value using getOldest method
+            LRUTable[getOldest()].setName(page); //replaces oldest page with the needed page
+            cout << "Added " << page << " to " << getOldest() << " : " << LRUTable[getOldest()].getName() << endl;
+            LRUTable[getOldest()].access(); //sets new age for page at that location
             return false;
-}
+
+    return 0;
+    }
 
 };
