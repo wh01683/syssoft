@@ -15,7 +15,7 @@ int main(){
 //    getline(cin,input);
 //    cout << "\nYou entered " <<input << endl;
 
-    string test = "abcdaeabbbeekljhbf1upouasndpconjasdaskldcbneeac";
+    string test = "aabcaeacbdacadkacbaasa";
     int pageFaultCounterLRU = 0;
     int pageFaultCounterFIFO = 0;
 
