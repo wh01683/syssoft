@@ -48,6 +48,7 @@ int oldestIndex; //keeps track of current index of the oldest page
 
             if(LRUTable[increment].getAge() < minAge){ //embedded min finder
             minAge = LRUTable[increment].getAge(); //new min age is set to age of current page
+            cout << minAge << endl;
             oldestIndex = increment; //sets index tracker to current index
             }
         }
@@ -86,6 +87,7 @@ bool checkForPage(char page){
             cout << "Page fault looking for: " << page << endl;
             //declares new index for oldest page, sets value using getOldest method
             LRUTable[getOldest()].setName(page); //replaces oldest page with the needed page
+            //cout << "Replacing " << LRUTable[getOldest()].getName() << " at position " << getOldest() << ". Age: " << LRUTable[getOldest()].getAge << endl;
             cout << "Added " << page << " to " << getOldest() << " : " << LRUTable[getOldest()].getName() << endl;
             LRUTable[getOldest()].access(); //sets new age for page at that location
             return false;
