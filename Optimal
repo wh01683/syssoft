@@ -11,6 +11,7 @@ Implements Optimal algorithm used in virtual page replacement. The algorythm loo
 class OPT {
   private:
   int OPTTableSize;
+  int loc;
   Page * OPTTable;
   
   public:
@@ -22,7 +23,7 @@ class OPT {
   OPTTable = new Page[size];
   }
   
-Value = new Value[size]; //holds value distances for table from current location.
+int Value [10]; //holds value distances for table from current location.
 
 int getSize() { return OPTTableSize; }
 
@@ -35,20 +36,20 @@ int getFurthest(void){
     for (int z = loc; z < getSize(); z ++) {
       //compares the value
       if (OPTTable[i].getName() == OPTTable[z].getName()) { //I need to compare with each value that is currently ahead of its location. On the list. Is there a simple way of doing this?
-        int Value[i] = z; //If positive, this should store how far the next similar value is from current.
+        Value[i] = z; //If positive, this should store how far the next similar value is from current.
         i++;
       }
       else{
-        int Value[i] = size + 1; //If no value matches, returns the highest possible size value. Thus it will be replaced.
+        Value[i] = getsize() + 1; //If no value matches, returns the highest possible size value. Thus it will be replaced.
         z++;
       }
     }
   }
 //In theory, should compare each value in the array and then figure out which one is furthest away. It will then return the one that is and replace it.
   for (int i = 1; i < getSize(); i ++){
-    furthestaway = value[0];
-    if (furthestaway < value[i]){
-      furthestaway = value[i];
+    furthestaway = Value[0];
+    if (furthestaway < Value[i]){
+      furthestaway = Value[i];
       i++;
     }
     else
@@ -58,13 +59,12 @@ int getFurthest(void){
 }
 
 bool checkForPage(char page){
+loc = 0;
   int inc;
-  int loc = 0;
   for (int i = 0; i < getSize(); i ++){
     loc = loc + 1;
     if (OPTTable[i].getName() == page){
       cout << "Found page " << page << " at pos " << i << endl;
-      OPTTable[i].access();
       return true;
       break;
       }
