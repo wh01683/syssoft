@@ -2,6 +2,7 @@
 #include <string>
 #include "FIFO.cpp"
 #include "LRU.cpp"
+#include "Optimal.cpp"
 
 /** This is the test area for the page replacement algorithms. Each algorithm has its own page fault counter.
 */
@@ -18,7 +19,8 @@ int main(){
     string test = "aabcaeacbdacadkacbaasa";
     int pageFaultCounterLRU = 0;
     int pageFaultCounterFIFO = 0;
-
+    int pageFaultCounterOPT = 0;
+    
 /** First in First Out algorithm test area.
 */
 int startFIFO = clock();
@@ -48,6 +50,21 @@ int startLRU = clock();
 
 int endLRU = clock() - startLRU; //time executed
 
+
+int startOPT = clock();
+    OPT opt(4);
+    cout << "Optimal Test Zone - Please Stand Back" << endl;
+    cout << "#######################################" << endl;
+    cout <<" "<<endl;
+        for(std::string::size_type i = 0; i < test.size(); ++i) {
+        if (opt.checkForPage(test[i]) == false) pageFaultCounterOPT ++;
+        opt.checkForPage(test[i]);
+        
+        }
+
+    int endOPT = clock() - startOPT; //time executed
+
+cout <<" "<<endl;
 /** Below is an extremely complex display feature for the test results*/
 
 cout <<" "<<endl;
@@ -60,8 +77,9 @@ cout << "FIFO Page Faults: " << pageFaultCounterFIFO << endl;
 cout <<" "<<endl;
 cout << "Execution time for LRU algorithm: " << endLRU << " milliseconds." << endl;
 cout << "LRU Page Faults: " << pageFaultCounterLRU << endl;
-
-
-
+cout <<" "<<endl;
+cout << "Execution time for Optimal algorithm: " << endOPT << " milliseconds." << endl;
+cout << "Optimal Page Faults: " << pageFaultCounterOPT << endl;
+cout <<" "<<endl;
 
 }//end main method
