@@ -40,7 +40,7 @@ int getFurthest(void){
         cout << "Inside getFurthest" << endl;
   int furthestaway; //keeps track of current index of the furthest page
   for (int i = 0; i < loc; i ++) {
-    for (int z = loc + 1; z < ; z ++) {
+    for (int z = loc + 1; z < OPTString; z ++) {
         cout << "getFurthest i-" << i << ", z-" << z << endl;
       //compares the value
       if (OPTTable[i].getName() == OPTTable[z].getName()) { //I need to compare with each value that is currently ahead of its location. On the list. Is there a simple way of doing this?
