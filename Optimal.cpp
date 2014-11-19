@@ -69,6 +69,7 @@ int getFurthest(void){
 
 bool checkForPage(char page){
   for (int i = 0; i < getSize(); i ++){
+    loc = i;
     if (OPTTable[i].getName() == page){
       cout << "Found page " << page << " at pos " << i << endl;
       return true;
@@ -78,8 +79,7 @@ bool checkForPage(char page){
         OPTTable[i].setName(page); //sets name of the page at the table's current index to the name of the page replacing it
         return false;
     }
-    else {
-      loc = i;
+  }
       cout << "Page fault looking for: " << page << endl;
       //changes new index for furthest page, sets value using getFurthest method
       int furthestPosition = getFurthest();
@@ -87,10 +87,5 @@ bool checkForPage(char page){
       cout << "Added " << page << " to " << furthestPosition << " : " << OPTTable[furthestPosition].getName() << endl;
       return false;
     }
-    }
-}
-
-
-
-};
+  };
 
