@@ -31,8 +31,6 @@ int startFIFO = clock();
     string::iterator it;
     for(std::string::size_type i = 0; i < test.size(); ++i) {
         if (fifo.checkForPage(test[i]) == false) pageFaultCounterFIFO ++;
-        fifo.checkForPage(test[i]);
-
         }
 int endFIFO = clock() - startFIFO; //time executed
 cout <<" "<<endl;
@@ -44,7 +42,6 @@ int startLRU = clock();
     cout << "#######################################" << endl;
     for(std::string::size_type i = 0; i < test.size(); ++i) {
         if (lru.checkForPage(test[i]) == false) pageFaultCounterLRU ++;
-        lru.checkForPage(test[i]);
 
         }
 
@@ -58,7 +55,6 @@ int startOPT = clock();
     cout <<" "<<endl;
         for(std::string::size_type i = 0; i < test.size(); ++i) {
         if (opt.checkForPage(test[i]) == false) pageFaultCounterOPT ++;
-        opt.checkForPage(test[i]);
         
         }
 
