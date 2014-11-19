@@ -35,14 +35,18 @@ int getSize() { return OPTTableSize; }
 that value that is furthest from the current. That value is to be deleted.
 */
 int getFurthest(void){
+        cout << "Inside getFurthest" << endl;
   int furthestaway; //keeps track of current index of the furthest page
   for (int i = 0; i < loc; i ++) {
     for (int z = loc + 1; z < getSize(); z ++) {
+        cout << "getFurthest i-" << i << ", z-" << z << endl;
       //compares the value
       if (OPTTable[i].getName() == OPTTable[z].getName()) { //I need to compare with each value that is currently ahead of its location. On the list. Is there a simple way of doing this?
-        Value[i] = z; //If positive, this should store how far the next similar value is from current.
+          cout << "Found match for " << OPTTable[i].getName() << endl;
+          Value[i] = z; //If positive, this should store how far the next similar value is from current.
       }
       else{
+          cout << "Else - set value[" << i<<"]" << " to " << getSize() +1 <<endl;
         Value[i] = getSize() + 1; //If no value matches, returns the highest possible size value. Thus it will be replaced.
       }
     }
@@ -83,8 +87,9 @@ bool checkForPage(char page){
 cout << "Page fault looking for: " << page << endl;
 loc = loc + 1;
 //changes new index for furthest page, sets value using getFurthest method
-OPTTable[getFurthest()].setName(page); //replaces furthest page with the needed page
-cout << "Added " << page << " to " << getFurthest() << " : " << OPTTable[getFurthest()].getName() << endl;
+    int furthestPosition = getFurthest();
+OPTTable[furthestPosition].setName(page); //replaces furthest page with the needed page
+cout << "Added " << page << " to " << furthestPosition << " : " << OPTTable[furthestPosition].getName() << endl;
 return false;
 }
 };
