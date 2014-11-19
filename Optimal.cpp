@@ -14,7 +14,8 @@ class OPT {
   int OPTTableSize;
   int loc;
   Page * OPTTable;
-
+  loc = 0;
+  
   public:
 
 /** Constructor to create a new Optimal page table using the Page class.
@@ -38,13 +39,11 @@ int getFurthest(void){
   for (int i = 0; i < getSize(); i ++) {
     for (int z = loc; z < getSize(); z ++) {
       //compares the value
-      if (OPTTable[i].getName() == OPTTable[z].getName()) { //I need to compare with each value that is currently ahead of its location. On the list. Is there a simple way of doing this?
+      if (OPTTable[i].getName() == z.getName()) { //I need to compare with each value that is currently ahead of its location. On the list. Is there a simple way of doing this?
         Value[i] = z; //If positive, this should store how far the next similar value is from current.
-        i++;
       }
       else{
         Value[i] = getSize() + 1; //If no value matches, returns the highest possible size value. Thus it will be replaced.
-        z++;
       }
     }
   }
@@ -56,23 +55,18 @@ int getFurthest(void){
     furthestaway = Value[0];
     if (furthestaway < Value[i]){
       furthestaway = Value[i];
-      i++;
     }
-    else
-    i++;
   }
   return furthestaway;
 }
 
 bool checkForPage(char page){
-loc = 0;
   int inc;
   for (int i = 0; i < getSize(); i ++){
     loc = loc + 1;
     if (OPTTable[i].getName() == page){
       cout << "Found page " << page << " at pos " << i << endl;
       return true;
-      break;
       }
     }
 
@@ -82,7 +76,6 @@ loc = 0;
       cout << "Empty page at " << inc << " adding page " << page << endl;
       OPTTable[inc].setName(page); //sets name of the page at the table's current index to the name of the page replacing it
       return false;
-      break;
     }
   }
 
@@ -93,7 +86,6 @@ loc = loc + 1;
 OPTTable[getFurthest()].setName(page); //replaces furthest page with the needed page
 cout << "Added " << page << " to " << getFurthest() << " : " << OPTTable[getFurthest()].getName() << endl;
 return false;
-return 0;
 }
 };
 
