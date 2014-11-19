@@ -9,11 +9,12 @@ Implements Optimal algorithm used in virtual page replacement. The algorythm loo
 -- func
 */
 class OPT {
+
   private:
   int OPTTableSize;
   int loc;
   Page * OPTTable;
-  
+
   public:
 
 /** Constructor to create a new Optimal page table using the Page class.
@@ -22,12 +23,14 @@ class OPT {
   OPTTableSize = size;
   OPTTable = new Page[size];
   }
-  
+
 int Value [10]; //holds value distances for table from current location.
 
 int getSize() { return OPTTableSize; }
 
-/** Compares each value with similar values ahead of its current location. This returns 
+
+
+/** Compares each value with similar values ahead of its current location. This returns
 that value that is furthest from the current. That value is to be deleted.
 */
 int getFurthest(void){
@@ -40,11 +43,14 @@ int getFurthest(void){
         i++;
       }
       else{
-        Value[i] = getsize() + 1; //If no value matches, returns the highest possible size value. Thus it will be replaced.
+        Value[i] = getSize() + 1; //If no value matches, returns the highest possible size value. Thus it will be replaced.
         z++;
       }
     }
   }
+
+
+
 //In theory, should compare each value in the array and then figure out which one is furthest away. It will then return the one that is and replace it.
   for (int i = 1; i < getSize(); i ++){
     furthestaway = Value[0];
@@ -69,6 +75,7 @@ loc = 0;
       break;
       }
     }
+
   for(inc = 0; inc < getSize(); inc ++){
     loc = loc + 1;
     if(OPTTable[inc].isSet() != true){ //checks whether the page was set or not
@@ -78,6 +85,8 @@ loc = 0;
       break;
     }
   }
+
+
 cout << "Page fault looking for: " << page << endl;
 loc = loc + 1;
 //changes new index for furthest page, sets value using getFurthest method

@@ -8,7 +8,6 @@ that a page's history of use may determine its future of use.
 
 -- LRUTableSize             : value to keep track of the page table's size
 -- LRUTable                 : pointer to an LRUPage object; used in construction of page tables
--- func
 
 
 */
