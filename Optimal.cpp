@@ -12,6 +12,7 @@ class OPT {
 
   private:
   int OPTTableSize;
+  int OPTString;
   int loc;
   Page * OPTTable;
   
@@ -19,9 +20,10 @@ class OPT {
 
 /** Constructor to create a new Optimal page table using the Page class.
 */
-  OPT( int size ){
+  OPT( int size, int StringSize ){
   OPTTableSize = size;
   OPTTable = new Page[size];
+  OPTString = StringSize;
   loc = 0; // 0 = loc
   }
 
@@ -38,7 +40,7 @@ int getFurthest(void){
         cout << "Inside getFurthest" << endl;
   int furthestaway; //keeps track of current index of the furthest page
   for (int i = 0; i < loc; i ++) {
-    for (int z = loc + 1; z < getSize(); z ++) {
+    for (int z = loc + 1; z < ; z ++) {
         cout << "getFurthest i-" << i << ", z-" << z << endl;
       //compares the value
       if (OPTTable[i].getName() == OPTTable[z].getName()) { //I need to compare with each value that is currently ahead of its location. On the list. Is there a simple way of doing this?
