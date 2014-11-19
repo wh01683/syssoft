@@ -12,9 +12,8 @@ class OPT {
 
   private:
   int OPTTableSize;
-  int loc;
+  int loc = 0;
   Page * OPTTable;
-  loc = 0;
   
   public:
 
