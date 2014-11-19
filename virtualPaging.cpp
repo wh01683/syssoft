@@ -49,7 +49,7 @@ int endLRU = clock() - startLRU; //time executed
 
 
 int startOPT = clock();
-    OPT opt(4);
+    OPT opt(4, test.size());
     cout << "Optimal Test Zone - Please Stand Back" << endl;
     cout << "#######################################" << endl;
     cout <<" "<<endl;

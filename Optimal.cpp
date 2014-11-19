@@ -40,6 +40,7 @@ int getFurthest(void){
         cout << "Inside getFurthest" << endl;
   int furthestaway; //keeps track of current index of the furthest page
   for (int i = 0; i < loc; i ++) {
+      cout << "getFurthest i-" << i << " loc - " << loc << endl;
     for (int z = loc + 1; z < OPTString; z ++) {
         cout << "getFurthest i-" << i << ", z-" << z << endl;
       //compares the value
@@ -67,16 +68,14 @@ int getFurthest(void){
 }
 
 bool checkForPage(char page){
-  int inc;
   for (int i = 0; i < getSize(); i ++){
-
     if (OPTTable[i].getName() == page){
       cout << "Found page " << page << " at pos " << i << endl;
       return true;
       }
-      elseif (OPTTable[inc].isSet() != true){ //checks whether the page was set or not
-        cout << "Empty page at " << inc << " adding page " << page << endl;
-        OPTTable[inc].setName(page); //sets name of the page at the table's current index to the name of the page replacing it
+      else if (OPTTable[i].isSet() != true){ //checks whether the page was set or not
+        cout << "Empty page at " << i << " adding page " << page << endl;
+        OPTTable[i].setName(page); //sets name of the page at the table's current index to the name of the page replacing it
         return false;
     }
     else {
@@ -93,6 +92,5 @@ bool checkForPage(char page){
 
 
 
-}
 };
 
