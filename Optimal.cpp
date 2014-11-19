@@ -12,7 +12,7 @@ class OPT {
 
   private:
   int OPTTableSize;
-  int loc = 0; // 0 = loc
+  
   Page * OPTTable;
   
   public:
@@ -22,6 +22,7 @@ class OPT {
   OPT( int size ){
   OPTTableSize = size;
   OPTTable = new Page[size];
+  int loc = 0; // 0 = loc
   }
 
 int Value [10]; //holds value distances for table from current location.
