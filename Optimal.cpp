@@ -39,7 +39,7 @@ int getFurthest(void){
   for (int i = 0; i < getSize(); i ++) {
     for (int z = loc; z < getSize(); z ++) {
       //compares the value
-      if (OPTTable[i].getName() == z.getName()) { //I need to compare with each value that is currently ahead of its location. On the list. Is there a simple way of doing this?
+      if (OPTTable[i].getName() == OPTTable[z].getName()) { //I need to compare with each value that is currently ahead of its location. On the list. Is there a simple way of doing this?
         Value[i] = z; //If positive, this should store how far the next similar value is from current.
       }
       else{
