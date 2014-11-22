@@ -17,6 +17,7 @@ class WSPage : public Page{
 *   --func ref()                        :void. sets reference bit to true*
 *   --func isInWS()                     :bool return to check if the page is in the working set or not
 *   --func inWS()                       :sets "inWS" to true
+*   --func use()                        :sets iterations to 0, ref, and inWS variables to true
 * */
 
 
@@ -57,7 +58,10 @@ public:
     void inWS(void){
         inWS = true;
     }
-
+    /* The "use" method changes the the iterations since last use to 0, and the reference and inWS variables to true
+    @param void
+    @return void
+    * */
     void use(void){
         iterationsSinceLastUse = 0;
         ref = true;
