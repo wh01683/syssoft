@@ -1,0 +1,6 @@
+#include "Page.cpp"
+#include <iostream>
+
+private:
+
+int iterationsSinceLastUse;

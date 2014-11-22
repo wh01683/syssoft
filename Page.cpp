@@ -28,6 +28,4 @@ class Page{
         bool isSet(void){
             return pageName != '\0';
         }
-};
-
-#endif
+;
