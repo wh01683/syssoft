@@ -18,7 +18,7 @@ int main(){
     int pageFaultCounterFIFO = 0;
     int pageFaultCounterOPT = 0;
     int pageFaultCounterWS = 0;
-    
+
 /** First in First Out algorithm test area.*/
 int startFIFO = clock();
     FIFO fifo (4);
@@ -51,7 +51,7 @@ int startOPT = clock();
     cout <<" "<<endl;
         for(std::string::size_type i = 0; i < test.size(); ++i) {
         if (opt.checkForPage(test[i]) == false) pageFaultCounterOPT ++;
-        
+
         }
 
     int endOPT = clock() - startOPT; //time executed
@@ -67,7 +67,7 @@ int startOPT = clock();
 
     }
 
-    int endWS = clock() - startOPT; //time executed
+    int endWS = clock() - startWS; //time executed
 
     cout <<" "<<endl;
 /** Below is an extremely complex display feature for the test results*/

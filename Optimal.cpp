@@ -15,7 +15,7 @@ class OPT {
   int OPTString;
   int loc;
   Page * OPTTable;
-  
+
   public:
 
 /** Constructor to create a new Optimal page table using the Page class.
