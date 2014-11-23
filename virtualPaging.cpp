@@ -3,6 +3,7 @@
 #include "FIFO.cpp"
 #include "LRU.cpp"
 #include "Optimal.cpp"
+#include "WorkingSet.cpp"
 
 /** This is the test area for the page replacement algorithms. Each algorithm has its own page fault counter.
 */
@@ -16,9 +17,9 @@ int main(){
     int pageFaultCounterLRU = 0;
     int pageFaultCounterFIFO = 0;
     int pageFaultCounterOPT = 0;
+    int pageFaultCounterWS = 0;
     
-/** First in First Out algorithm test area.
-*/
+/** First in First Out algorithm test area.*/
 int startFIFO = clock();
     FIFO fifo (4);
     cout << "FIFO Test Zone - Please Stand Back" << endl;
@@ -30,8 +31,7 @@ int startFIFO = clock();
         }
 int endFIFO = clock() - startFIFO; //time executed
 cout <<" "<<endl;
-/** Least Recently Used algorithm test area.
-*/
+/** Least Recently Used algorithm test area.*/
 int startLRU = clock();
     LRU lru(5);
     cout << "LRU Test Zone - Please Stand Back" << endl;
@@ -56,7 +56,20 @@ int startOPT = clock();
 
     int endOPT = clock() - startOPT; //time executed
 
-cout <<" "<<endl;
+
+    int startWS = clock();
+    WorkingSet ws = WorkingSet(4);
+    cout << "Working Set Test Zone - Please Stand Back" << endl;
+    cout << "#######################################" << endl;
+    cout <<" "<<endl;
+    for(std::string::size_type i = 0; i < test.size(); ++i) {
+        if (ws.checkForPage(test[i]) == false) pageFaultCounterWS ++;
+
+    }
+
+    int endWS = clock() - startOPT; //time executed
+
+    cout <<" "<<endl;
 /** Below is an extremely complex display feature for the test results*/
 
 cout <<" "<<endl;
@@ -73,5 +86,7 @@ cout <<" "<<endl;
 cout << "Execution time for Optimal algorithm: " << endOPT << " milliseconds." << endl;
 cout << "Optimal Page Faults: " << pageFaultCounterOPT << endl;
 cout <<" "<<endl;
-
+cout << "Execution time for Working Set algorithm: " << endWS << " milliseconds." << endl;
+cout << "Working Set Page Faults: " << pageFaultCounterWS << endl;
+cout <<" "<<endl;
 }//end main method

@@ -19,6 +19,7 @@ using namespace std;
 *                                 are looking for.
 */
 class FIFO{
+
     private:
         int firstPageIndex;
         int pageTableSize;

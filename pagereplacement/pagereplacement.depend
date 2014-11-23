@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1416775099 source:/home/robert/Development/clion/projects/syssoft/FIFO.cpp
+	"Page.cpp"
+	<iostream>
+
+1416775163 /home/robert/Development/clion/projects/syssoft/Page.cpp
+	<string>
+
+1416662397 source:/home/robert/Development/clion/projects/syssoft/LRU.cpp
+	"LRUPage.cpp"
+	<iostream>
+	<time.h>
+
+1416661934 /home/robert/Development/clion/projects/syssoft/LRUPage.cpp
+	<cstdio>
+	<ctime>
+	"Page.cpp"
+
+1416661934 source:/home/robert/Development/clion/projects/syssoft/LRUPage.cpp
+	<cstdio>
+	<ctime>
+	"Page.cpp"
+
+1416613392 source:/home/robert/Development/clion/projects/syssoft/Optimal.cpp
+	"Page.cpp"
+	<iostream>
+	<time.h>
+
+1416775163 source:/home/robert/Development/clion/projects/syssoft/Page.cpp
+	<string>
+

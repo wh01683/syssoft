@@ -1,8 +1,6 @@
-
 #include "WSPage.cpp"
-#include <iostream>
 
-/*
+/**
 @Author: Robert Howerton
 @Description: This program is designed to demonstrate the working set page replacement algorithm.
 @Function: The working set algorithm employs a timer, a "working set" (hence the name), and a moving time window of fixed size T
@@ -25,7 +23,7 @@ private:
 
 public:
 
-    #define MOVINGWINDOW = 4;
+#define MOVINGWINDOW = 4;
 
 
     WorkingSet(int size) {
@@ -41,13 +39,13 @@ public:
 */
 
     bool checkForPage(char page) {
-
-        int inc; //incrementor
+        executor(); //initializes the executor method
+        int inc; //incrementer
 
         for (int i = 0; i < WSTableSize; i++) {
             if (WSTable[i].getName() == page) {
                 cout << "Found page " << page << " at pos " << i << endl;
-                WSTable[i].ref();
+                WSTable[i].use();
                 return true;
                 break;
             }
@@ -57,7 +55,7 @@ public:
             if (WSTable[inc].isSet() != true) { //checks whether the page was set or not
                 cout << "Empty page at " << inc << " adding page " << page << endl;
                 WSTable[inc].setName(page); //sets name of the page at the table's current index to the name of the page replacing it
-                WSTable[inc].ref(); //sets new age for page at that location
+                WSTable[inc].use(); //sets new age for page at that location
                 return false;
                 break;
             }
@@ -65,36 +63,32 @@ public:
 
         cout << "Page fault looking for: " << page << endl;
         //declares new index for oldest page, sets value using getOldest method
-        WSTable[getPageWithGreatestIterationsSinceLastReference()].setName(page); //replaces oldest page with the needed page
-        cout << "Added " << page << " to " << getPageWithGreatestIterationsSinceLastReference() << " : " << WSTable[getPageWithGreatestIterationsSinceLastReference()].getName() << endl;
-        WSTable[getPageWithGreatestIterationsSinceLastReference()].use(); //sets new age for page at that location
+        int tempIndex = getPageWithGreatestIterationsSinceLastReference();
+        WSTable[tempIndex].setName(page); //replaces oldest page with the needed page
+        cout << "Added " << page << " to " << tempIndex << " : " << WSTable[tempIndex].getName() << endl;
+        WSTable[tempIndex].use(); //sets new age for page at that location
         return false;
 
         return 0;
     }
 
 
-/*
- Method to cycle through the working set and delete old pages (outside time window 4)
-//this method will also maintain the working set
-//
-//@param void
-//@return void
+/**
+Method to cycle through the working set and delete old pages (outside time window 4)
+this method will also maintain the working set. Ideally, this method will execute during the entirety of the program's runtime
+
+@param void
+@return void
 */
 
     void executor(void) {
-/*
-*int t is the time window incrementer
-*t will start at 0 and increment to 3 over time. once 3 is reached (4 total iterations), the entire WS Table is cycled through and all pages which
-//are not set are deleted.*/
-
+/** int t is the time window incrementer
+* t will start at 0 and increment to 3 over time. once 3 is reached (4 total iterations), the entire WS Table is cycled through and all pages which
+* are not set are deleted.*/
 
         if (t == 3) {
             t = 0;
-/*
-If the target page is not marked AND not in the working set, delete it
-*/
-
+            /*If the target page is not marked AND not in the working set, delete it*/
             for (int k = 0; k < WSTableSize; k++) {
                 if (!WSTable[k].isReffed() && findInWorkingSet(WSTable[k]) == false) WSTable[k].setName('\0');
             }
@@ -104,7 +98,7 @@ If the target page is not marked AND not in the working set, delete it
 
     }
 
-/*
+/**
 *method used to find target page in the working set
 @param page to be looked for
 @return boolean true if found, false if not found
@@ -114,12 +108,19 @@ If the target page is not marked AND not in the working set, delete it
 
         for (int i = 0; i < WSTableSize; i++) {
             if (WSTable[i].isInWS()) return true;
-            }
+        }
 
         return false;
-       }
+    }
 
-    int getPageWithGreatestIterationsSinceLastReference(){
+    /**
+    *Finds the page with the greatest number of time iterations since the last reference. This is a condition on which
+    * to handle page faults. If a page fault occurs, the "preferred" page to be replaced is the one with the greatest
+    * number iterations since the last page reference
+    * @param void
+    * @return int: returns the index value of the page with the greatest number of iterations since last use*/
+
+    int getPageWithGreatestIterationsSinceLastReference(void){
         int tempGreatestIndex = 0;
         int tempGreatestIts = WSTable[0].getIts();
         for (int i = 0; i < WSTableSize; i ++){
@@ -133,8 +134,3 @@ If the target page is not marked AND not in the working set, delete it
     }
 
 };
-
-
-
-
-

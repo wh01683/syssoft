@@ -9,7 +9,10 @@ that a page's history of use may determine its future of use.
 -- LRUTableSize             : value to keep track of the page table's size
 -- LRUTable                 : pointer to an LRUPage object; used in construction of page tables
 
-
+--func LRU()                : constructor to make an array of LRU Pages
+--func getOldest()          : int return. finds the oldest page in the array and returns index position
+--func checkForPage()       :bool return. checks for the required page in the array. proceeds to execute the LRU
+                            algorithm implementation for page replacement on the condition that the page is not in the array
 */
 
 class LRU{
@@ -57,14 +60,14 @@ int oldestIndex; //keeps track of current index of the oldest page
 /** This is the 'guts' of the LRU algorithm so to speak. This method checks for the required page (in the form of a single
 * character). If an empty page is found in the LRUPage table, the page is placed at this spot in the table. The table index is checked
 * for emptiness using a boolean set value; property of the page class. See page class documentation for details.
-* much of this code was copied from FIFO.cpp for the sake of uniformity, but the comparion & decision making strategy are different
+* much of this code was copied from FIFO.cpp for the sake of uniformity, but the comparison & decision making strategy are different
 @param page object required by the system
 @return true if the page was already in the table and false if it was not
 */
 bool checkForPage(char page){
 
 
-            int inc; //incrementor
+            int inc; //incrementer
             for (int i = 0; i < getSize(); i ++){
                     if (LRUTable[i].getName() == page){
                         cout << "Found page " << page << " at pos " << i << endl;

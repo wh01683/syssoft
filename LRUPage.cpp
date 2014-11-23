@@ -58,6 +58,7 @@ public:
 /** gets age of the page
 @param no parameters
 @return returns age*/
-    long getAge(){return age;};
+    long getAge(){return age;
+    };
 
 };

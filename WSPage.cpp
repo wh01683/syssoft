@@ -47,7 +47,7 @@ public:
         return ref;
     }
 
-    void ref(void){
+    void reference(void){
         ref = true;
     }
 
@@ -55,7 +55,7 @@ public:
         return inWS;
     }
 
-    void inWS(void){
+    void addToWS(void){
         inWS = true;
     }
     /* The "use" method changes the the iterations since last use to 0, and the reference and inWS variables to true
