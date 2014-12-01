@@ -2,7 +2,9 @@
 #include <iostream>
 #include <time.h>
 using namespace std;
-/**
+
+/** @author Robert Howerton
+    @date 12/01/2014
 Implementation of the Least Recently Used (LRU) algorithm used in virtual page replacement. The algorithm operates on the assumption
 that a page's history of use may determine its future of use.
 
@@ -50,7 +52,7 @@ int oldestIndex; //keeps track of current index of the oldest page
 
             if(LRUTable[increment].getAge() < minAge){ //embedded min finder
             minAge = LRUTable[increment].getAge(); //new min age is set to age of current page
-            cout << minAge << endl;
+      //      cout << minAge << endl;
             oldestIndex = increment; //sets index tracker to current index
             }
         }
@@ -70,7 +72,7 @@ bool checkForPage(char page){
             int inc; //incrementer
             for (int i = 0; i < getSize(); i ++){
                     if (LRUTable[i].getName() == page){
-                        cout << "Found page " << page << " at pos " << i << endl;
+                    //    cout << "Found page " << page << " at pos " << i << endl;
                         LRUTable[i].access();
                         return true;
                         break;
@@ -78,7 +80,7 @@ bool checkForPage(char page){
             }
             for(inc = 0; inc < getSize(); inc ++){
                     if(LRUTable[inc].isSet() != true){ //checks whether the page was set or not
-                        cout << "Empty page at " << inc << " adding page " << page << endl;
+                      //  cout << "Empty page at " << inc << " adding page " << page << endl;
                         LRUTable[inc].setName(page); //sets name of the page at the table's current index to the name of the page replacing it
                         LRUTable[inc].access(); //sets new age for page at that location
                         return false;
@@ -86,10 +88,10 @@ bool checkForPage(char page){
                     }
             }
 
-            cout << "Page fault looking for: " << page << endl;
+          //  cout << "Page fault looking for: " << page << endl;
             //declares new index for oldest page, sets value using getOldest method
             LRUTable[getOldest()].setName(page); //replaces oldest page with the needed page
-            cout << "Added " << page << " to " << getOldest() << " : " << LRUTable[getOldest()].getName() << endl;
+           // cout << "Added " << page << " to " << getOldest() << " : " << LRUTable[getOldest()].getName() << endl;
             LRUTable[getOldest()].access(); //sets new age for page at that location
             return false;
 

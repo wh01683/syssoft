@@ -2,7 +2,11 @@
 #include <iostream>
 
 class WSPage : public Page{
-/**  Working Set page class which extends the Page class. This class was created to minimize redefinition errors and
+
+/** @author Robert Howerton
+    @date 12/01/2014
+
+Working Set page class which extends the Page class. This class was created to minimize redefinition errors and
 *   to also give the Working Set algorithm the tools it needs to work with; namely the "iterationsSinceLastUse" variable
 *
 *   --iterationsSinceLastUse            :int keeps track of the number of time units elapsed since the particular page

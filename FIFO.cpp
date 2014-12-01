@@ -2,7 +2,8 @@
 #include <iostream>
 using namespace std;
 
-/**
+/** @author Trent Holliday
+    @date 12/01/2014
 * Implementation of First In First Out virtual memory replacement algorithm.
 * Initialize the object with the number of pages you want to keep stored in the page table.
 *
@@ -44,18 +45,18 @@ class FIFO{
             int ele;
             for(ele=0; ele < pageTableSize; ele++){
                 if(!pageTable[ele].isSet()){
-                    cout << "Empty page at " << ele << " adding page " << page << endl;
+                  //  cout << "Empty page at " << ele << " adding page " << page << endl;
                     pageTable[ele].setName(page);
                     return false;
                 }
                 if (pageTable[ele].getName() == page){
-                    cout << "Found page " << page << " at pos " << ele << endl;
+               //     cout << "Found page " << page << " at pos " << ele << endl;
                     return true;
                 }
             }
-            cout << "Page fault looking for: " << page << endl;
+         //   cout << "Page fault looking for: " << page << endl;
             pageTable[getFirstPage()].setName(page);
-            cout << "Added " << page << " to " << getFirstPage() << " : " << pageTable[getFirstPage()].getName() << endl;
+         //   cout << "Added " << page << " to " << getFirstPage() << " : " << pageTable[getFirstPage()].getName() << endl;
             incrementFirstPage();
             return false;
         }

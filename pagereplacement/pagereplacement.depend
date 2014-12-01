@@ -65,3 +65,69 @@
 	"Page.cpp"
 	<iostream>
 
+1417462857 source:/home/robert/dev/clion/projects/syssoft/LRUPage.cpp
+	<cstdio>
+	<ctime>
+	"Page.cpp"
+
+1417462983 /home/robert/dev/clion/projects/syssoft/Page.cpp
+	<string>
+
+1417462983 source:/home/robert/dev/clion/projects/syssoft/Page.cpp
+	<string>
+
+1417463020 source:/home/robert/dev/clion/projects/syssoft/virtualPaging.cpp
+	<iostream>
+	<string>
+	"FIFO.cpp"
+	"LRU.cpp"
+	"Optimal.cpp"
+	"WorkingSet.cpp"
+
+1417463153 /home/robert/dev/clion/projects/syssoft/FIFO.cpp
+	"Page.cpp"
+	<iostream>
+
+1417463153 /home/robert/dev/clion/projects/syssoft/LRU.cpp
+	"LRUPage.cpp"
+	<iostream>
+	<time.h>
+
+1417462857 /home/robert/dev/clion/projects/syssoft/LRUPage.cpp
+	<cstdio>
+	<ctime>
+	"Page.cpp"
+
+1417463153 /home/robert/dev/clion/projects/syssoft/Optimal.cpp
+	"Page.cpp"
+	<iostream>
+	<time.h>
+
+1417463153 /home/robert/dev/clion/projects/syssoft/WorkingSet.cpp
+	"WSPage.cpp"
+
+1417462833 /home/robert/dev/clion/projects/syssoft/WSPage.cpp
+	"Page.cpp"
+	<iostream>
+
+1417462833 source:/home/robert/dev/clion/projects/syssoft/WSPage.cpp
+	"Page.cpp"
+	<iostream>
+
+1417463153 source:/home/robert/dev/clion/projects/syssoft/FIFO.cpp
+	"Page.cpp"
+	<iostream>
+
+1417463153 source:/home/robert/dev/clion/projects/syssoft/LRU.cpp
+	"LRUPage.cpp"
+	<iostream>
+	<time.h>
+
+1417463153 source:/home/robert/dev/clion/projects/syssoft/Optimal.cpp
+	"Page.cpp"
+	<iostream>
+	<time.h>
+
+1417463153 source:/home/robert/dev/clion/projects/syssoft/WorkingSet.cpp
+	"WSPage.cpp"
+

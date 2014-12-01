@@ -3,7 +3,8 @@
 #include <time.h>
 
 using namespace std;
-/**
+/** @author Jared Baker
+    @date 12/01/2014
 Implements Optimal algorithm used in virtual page replacement. The algorythm looks into the page's future to decide what will be used
 -- OPTTableSize : value to keep track of the page table's size
 -- OPTTable : pointer to an Page object; used in construction of page tables
@@ -80,19 +81,19 @@ void stringpage(char page){
 bool checkForPage(char page){
   for (int i = 0; i < getSize(); i ++){
     if(OPTTable[i].isSet() != true){ //checks whether the page was set or not
-      cout << "Empty page at " << i << " adding page " << page << endl;
+   //   cout << "Empty page at " << i << " adding page " << page << endl;
       OPTTable[i].setName(page); //sets name of the page at the table's current index to the name of the page replacing it
       return false;
     }
   if (OPTTable[i].getName() == page){
-    cout << "Found page " << page << " at pos " << i << endl;
+   // cout << "Found page " << page << " at pos " << i << endl;
     return true;
     }
   }
-  cout << "Page fault looking for: " << page << endl;
+ // cout << "Page fault looking for: " << page << endl;
 //changes new index for furthest page, sets value using getFurthest method
   OPTTable[getFurthest()].setName(page); //replaces furthest page with the needed page
-  cout << "Added " << page << " to " << getFurthest() << " : " << OPTTable[getFurthest()].getName() << endl;
+ // cout << "Added " << page << " to " << getFurthest() << " : " << OPTTable[getFurthest()].getName() << endl;
   return false;
   }
 };

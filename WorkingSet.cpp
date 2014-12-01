@@ -1,9 +1,9 @@
 #include "WSPage.cpp"
 
 /**
-@Author: Robert Howerton
-@Description: This program is designed to demonstrate the working set page replacement algorithm.
-@Function: The working set algorithm employs a timer, a "working set" (hence the name), and a moving time window of fixed size T
+@author: Robert Howerton
+@description: This program is designed to demonstrate the working set page replacement algorithm.
+@function: The working set algorithm employs a timer, a "working set" (hence the name), and a moving time window of fixed size T
 the time window moves across the working set. If a particular page is not referenced for 4 iterations, that page's location
 is automatically freed for use by another page.
 
@@ -44,7 +44,7 @@ public:
 
         for (int i = 0; i < WSTableSize; i++) {
             if (WSTable[i].getName() == page) {
-                cout << "Found page " << page << " at pos " << i << endl;
+      //          cout << "Found page " << page << " at pos " << i << endl;
                 WSTable[i].use();
                 return true;
                 break;
@@ -53,7 +53,7 @@ public:
 
         for (inc = 0; inc < WSTableSize; inc++) {
             if (WSTable[inc].isSet() != true) { //checks whether the page was set or not
-                cout << "Empty page at " << inc << " adding page " << page << endl;
+    //            cout << "Empty page at " << inc << " adding page " << page << endl;
                 WSTable[inc].setName(page); //sets name of the page at the table's current index to the name of the page replacing it
                 WSTable[inc].use(); //sets new age for page at that location
                 return false;
@@ -61,11 +61,11 @@ public:
             }
         }
 
-        cout << "Page fault looking for: " << page << endl;
+  //      cout << "Page fault looking for: " << page << endl;
         //declares new index for oldest page, sets value using getOldest method
         int tempIndex = getPageWithGreatestIterationsSinceLastReference();
         WSTable[tempIndex].setName(page); //replaces oldest page with the needed page
-        cout << "Added " << page << " to " << tempIndex << " : " << WSTable[tempIndex].getName() << endl;
+//        cout << "Added " << page << " to " << tempIndex << " : " << WSTable[tempIndex].getName() << endl;
         WSTable[tempIndex].use(); //sets new age for page at that location
         return false;
 

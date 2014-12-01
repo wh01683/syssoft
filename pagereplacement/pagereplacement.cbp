@@ -34,9 +34,13 @@
 		<Unit filename="../FIFO.cpp" />
 		<Unit filename="../LRU.cpp" />
 		<Unit filename="../LRUPage.cpp" />
+		<Unit filename="../Optimal.cpp" />
 		<Unit filename="../Page.cpp" />
 		<Unit filename="../README.md" />
+		<Unit filename="../WSPage.cpp" />
+		<Unit filename="../WorkingSet.cpp" />
 		<Unit filename="../virtualPaging.cpp" />
+		<Unit filename="WSPage" />
 		<Extensions>
 			<code_completion />
 			<debugger />

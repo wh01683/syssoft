@@ -3,7 +3,8 @@
 #define PAGE_CPP
 using namespace std;
 
-/**
+/** @author Trent Holiday, Robert Howerton, Jared Baker
+    @date 12/01/2014
 * Basic implementation of a virtual memory page.
 *
 * -- pageName                   : Char representing name of the page

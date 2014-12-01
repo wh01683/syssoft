@@ -2,7 +2,9 @@
 #include <ctime>
 #include "Page.cpp"
 using namespace std;
-/**
+
+/** @author Robert Howerton
+    @date 12/01/2014
 * Implementation of a virtual memory page for the Least Recently Used algorithm (LRU).
 * This class extends the Page class.
 *
