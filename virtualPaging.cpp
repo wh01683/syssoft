@@ -57,7 +57,6 @@ int startOPT = clock();
                 pageFaultCounterOPT ++;
                 opt.getlocation(i); //calls location of page fault
                 }
-            opt.checkForPage(test[i]);
             }
         int endOPT = clock() - startOPT; //time executed
     cout <<" "<<endl;
