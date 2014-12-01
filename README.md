@@ -1,4 +1,4 @@
-syssoft
+Virtual Memory Paging Project
 ===========
 
 Repository for System Software Fall 2014 semester project; group 1.
@@ -13,8 +13,8 @@ Jared Baker     <jb15064@georgiasouthern.edu>
 
 Denzel Kent     <dk01190@georgiasouthern.edu>
 
-############################################################################################################################
-Instructions on running (Linux):
+## How to run
+####Instructions on running (Linux):
 
 1) Download all files and extract them into a folder
 
@@ -26,7 +26,7 @@ will be displayed in the console. These results include the total page fault tal
 milliseconds for each algorithm. The test string may be changed as desired through virtualPaging.cpp.
 
 
-Instructions on running (Windows):
+####Instructions on running (Windows):
 
 1) Download all .cpp files and extract them into a folder.
 
