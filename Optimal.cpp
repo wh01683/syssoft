@@ -38,7 +38,7 @@ that value that is furthest from the current. That value is to be deleted.
   int getFurthest(void){
     int furthestaway; //keeps track of current index of the furthest page
     for (int i = 0; i < getSize(); i ++) {
-    for (int z = loc + 1; z < StringSize - loc; z ++) {
+    for (int z = loc + 1; z < StringSize; z ++) {
 //compares the value
     if (OPTTable[i].getName() == OPTTableString[z].getName()) { //I need to compare with each value that is currently ahead of its location. On the list. Is there a simple way of doing this?
       Value[i] = z; //If positive, this should store how far the next similar value is from current.
