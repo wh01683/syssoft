@@ -52,7 +52,7 @@ that value that is furthest from the current. That value is to be deleted.
 //Compare each value in the array and then figure out which one is furthest away. It will then return the one that is and replace it.
   furthestaway = 0;
   for (int i = 0; i < getSize(); i ++){
-      if (furthestaway < Value[i]){
+      if (Value[furthestaway] < Value[i]){
         furthestaway = i;
       }
     }
