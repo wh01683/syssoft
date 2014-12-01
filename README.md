@@ -10,18 +10,18 @@ Robert Howerton <wh01683@georgiasouthern.edu>
 Jared Baker     <jb15064@georgiasouthern.edu>
 Denzel Kent     <dk01190@georgiasouthern.edu>
 
-Project Instructions: 
+############################################################################################################################
 
-Implement a program that demonstrates virtual memory page replacement algorithms, with user provided input. The implementation should include FIFO, Optimal, LRU at a minimum.
+Instructions on running:
 
-Compare the performance of these versions and provide an analysis of the results.
+1) Download all .cpp files and extract them into a folder.
+2) Compile all files
+3) Run "virtualPaging.cpp"
+4) The test string in virtualPaging.cpp will be fed through and results from FIFO, LRU, WS, and Optimal
+will be displayed in the console. These results include the total page fault tally and execution time in
+milliseconds for each algorithm. The test string may be changed as desired through virtualPaging.cpp.
 
-Conventions:
 
-Editing: Whenever we make an edit, let's try our best to let others know what we did. i.e. what changes were made, what problems were solved/bugs were fixed, etc.
-
-Commenting: We should comment code to make it clear for other users (naturally). However, I believe this is only truly necessary for code we write to follow complex algorithms.
-  Let's use this page as a guideline for documentation: http://www.edparrish.net/common/cppdoc.html
   
   
   
