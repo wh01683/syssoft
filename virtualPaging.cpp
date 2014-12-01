@@ -44,19 +44,18 @@ int startLRU = clock();
 int endLRU = clock() - startLRU; //time executed
 
 int startOPT = clock();
-    OPT opt(4);
-    OPT optstring(test.size());
+    OPT opt(4, test.size());
+    opt.getstringsize(test.size());
     cout << "Optimal Test Zone - Please Stand Back" << endl;
     cout << "#######################################" << endl;
     cout <<" "<<endl;
         for(std::string::size_type i = 0; i < test.size(); ++i) {
-            optstring.stringpage(test[i]); // Retrieve's String list
-        }
+            opt.stringpage(test[i]); //sets up string to reference future strings
+            }
         for(std::string::size_type i = 0; i < test.size(); ++i) {
             if (opt.checkForPage(test[i]) == false) {
                 pageFaultCounterOPT ++;
-                optstring.getstringsize(test.size());
-                opt.getlocation(i);
+                opt.getlocation(i); //calls location of page fault
                 }
             opt.checkForPage(test[i]);
             }
