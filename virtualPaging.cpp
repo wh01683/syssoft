@@ -43,19 +43,25 @@ int startLRU = clock();
 
 int endLRU = clock() - startLRU; //time executed
 
-
 int startOPT = clock();
-    OPT opt(4, test.size());
+    OPT opt(4);
+    OPT optstring(test.size());
     cout << "Optimal Test Zone - Please Stand Back" << endl;
     cout << "#######################################" << endl;
     cout <<" "<<endl;
-        for(std::string::size_type i = 0; i < test.size(); ++i) {
-        if (opt.checkForPage(test[i]) == false) pageFaultCounterOPT ++;
-
+    for(std::string::size_type i = 0; i < test.size(); ++i) {
+        optstring.stringpage(test[i]);
+    }
+    for(std::string::size_type i = 0; i < test.size(); ++i) {
+        if (opt.checkForPage(test[i]) == false) {
+            pageFaultCounterOPT ++;
+            optstring.getstringsize(test.size());
+            opt.getlocation(i);
         }
-
+    opt.checkForPage(test[i]);
+    }
     int endOPT = clock() - startOPT; //time executed
-
+        cout <<" "<<endl;
 
     int startWS = clock();
     WorkingSet ws = WorkingSet(4);
