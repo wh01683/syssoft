@@ -5,9 +5,12 @@ Repository for System Software Fall 2014 semester project; group 1.
 
 Project Members:
 
-Trent Holliday  <wh01818@georgiasouthern.edu>  
+Trent Holliday  <wh01818@georgiasouthern.edu> 
+
 Robert Howerton <wh01683@georgiasouthern.edu>
+
 Jared Baker     <jb15064@georgiasouthern.edu>
+
 Denzel Kent     <dk01190@georgiasouthern.edu>
 
 ############################################################################################################################
