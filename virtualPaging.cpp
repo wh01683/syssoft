@@ -52,9 +52,9 @@ int startOPT = clock();
             opt.stringpage(test[i]); //sets up string to reference future strings
             }
         for(std::string::size_type i = 0; i < test.size(); ++i) {
+            opt.getlocation(i); //calls location of page fault
             if (opt.checkForPage(test[i]) == false) {
                 pageFaultCounterOPT ++;
-                opt.getlocation(i); //calls location of page fault
                 }
             }
         int endOPT = clock() - startOPT; //time executed
