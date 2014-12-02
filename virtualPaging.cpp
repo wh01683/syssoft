@@ -5,10 +5,12 @@
 #include "FIFO.cpp"
 #include "LRU.cpp"
 #include "Optimal.cpp"
+#include "NFU.cpp"
 #include "WorkingSet.cpp"
 
+
 /**
-@author Trent Holliday, Robert Howerton, Jared Baker
+@author Trent Holliday, Robert Howerton, Jared Baker, Denzel Kent
 @date 12/01/2014
 
 
@@ -42,10 +44,16 @@ int main(int argc, char* argv[]){
         }
         numOfPages = 4;
     }
+<<<<<<< HEAD
+    test = "abaaceeeadjvhbsdkjfvbhsdkjfvbsdkshdbcasjkdvakjscvhdedbbace";
+    int numRuns = 10;
+=======
 
+>>>>>>> 862effa43e07d5ec2620d6bf94004e70484fea38
     int pageFaultCounterLRU = 0;
     int pageFaultCounterFIFO = 0;
     int pageFaultCounterOPT = 0;
+    int pageFaultCounterNFU = 0;
     int pageFaultCounterWS = 0;
 
     /** First in First Out algorithm test area.*/
@@ -82,8 +90,29 @@ int main(int argc, char* argv[]){
     }
     int endOPT = clock() - startOPT; //time executed
 
+<<<<<<< HEAD
+int startNFU = clock();
+NFU nfu(4, test.size());
+nfu.getStringSize(test.size());
+cout << "Testing NFU..." << endl;
+for(std::string::size_type i = 0; i < test.size(); ++i) {
+nfu.stringPage(test[i]); //sets up string to reference future strings
+}
+for(std::string::size_type i = 0; i < test.size(); ++i) {
+nfu.getLocation(i);
+if (nfu.checkForPage(test[i]) == false) {
+pageFaultCounterNFU ++;
+ //calls location of page fault
+}
+}
+
+int endNFU = clock() - startNFU; //time executed
+   int startWS = clock();
+    WorkingSet ws = WorkingSet(4);
+=======
     int startWS = clock();
     WorkingSet ws = WorkingSet(numOfPages);
+>>>>>>> 862effa43e07d5ec2620d6bf94004e70484fea38
     cout << "Testing WS..." << endl;
     cout << " " << endl;
     for (std::string::size_type i = 0; i < test.size(); ++i) {
@@ -116,6 +145,11 @@ int main(int argc, char* argv[]){
     cout << "Execution time for Optimal algorithm: " << endOPT << " milliseconds." << endl;
     cout << "Optimal Page Faults: " << pageFaultCounterOPT << endl;
     cout <<" "<<endl;
+    cout <<"NFU"<<endl;
+    cout <<"-------------------------"<<endl;
+    cout << "Execution time for NFU algorithm: " << endNFU << " milliseconds." << endl;
+    cout << "NFU Page Faults: " << pageFaultCounterNFU << endl;
+    cout << " "<<endl;
     cout <<"WS"<<endl;
     cout <<"-------------------------"<<endl;
     cout << "Execution time for Working Set algorithm: " << endWS << " milliseconds." << endl;
