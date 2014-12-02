@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <stdlib.h>
 #include <string>
 #include "FIFO.cpp"
@@ -20,17 +21,28 @@ using namespace std;
 int main(int argc, char* argv[]){
     string alphabet[26] = { "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z" };
     string test;
-    if(argc > 1){
+    int numOfPages;
+    if (argc == 2) {
         test = argv[1];
-    }else{
-        int length = rand() % 15 + 5;
+        cout << "arg1" << endl;
+    }
+    else if (argc == 3) {
+        test = argv[1];
+        istringstream ss(argv[2]);
+        if (!(ss >> numOfPages)) {
+            cerr << "ERROR: Invalid number of pages '" << argv[2] << "'\n";
+            return 1;
+        }
+    }
+    else{
+        int length = rand() % 16 + 5;
         int i;
         for(i=0;i<length; i++){
             test.append(alphabet[rand() % 9]);
         }
+        numOfPages = 4;
     }
-    test = "abaacdedbbace";
-    int numRuns = 10;
+
     int pageFaultCounterLRU = 0;
     int pageFaultCounterFIFO = 0;
     int pageFaultCounterOPT = 0;
@@ -38,7 +50,7 @@ int main(int argc, char* argv[]){
 
     /** First in First Out algorithm test area.*/
     int startFIFO = clock();
-    FIFO fifo(4);
+    FIFO fifo(numOfPages);
     cout << "Testing FIFO..." << endl;
     string::iterator it;
     for (std::string::size_type i = 0; i < test.size(); ++i) {
@@ -47,7 +59,7 @@ int main(int argc, char* argv[]){
     int endFIFO = clock() - startFIFO; //time executed
     /** Least Recently Used algorithm test area.*/
     int startLRU = clock();
-    LRU lru(4);
+    LRU lru(numOfPages);
     cout << "Testing LRU..." << endl;
     for (std::string::size_type i = 0; i < test.size(); ++i) {
         if (lru.checkForPage(test[i]) == false) pageFaultCounterLRU++;
@@ -57,7 +69,7 @@ int main(int argc, char* argv[]){
     int endLRU = clock() - startLRU; //time executed
 
     int startOPT = clock();
-    OPT opt(4, test.size());
+    OPT opt(numOfPages, test.size());
     opt.getstringsize(test.size());
     cout << "Testing Optimal..." << endl;
     for (std::string::size_type i = 0; i < test.size(); ++i) {
@@ -71,8 +83,9 @@ int main(int argc, char* argv[]){
     int endOPT = clock() - startOPT; //time executed
 
     int startWS = clock();
-    WorkingSet ws = WorkingSet(4);
+    WorkingSet ws = WorkingSet(numOfPages);
     cout << "Testing WS..." << endl;
+    cout << " " << endl;
     for (std::string::size_type i = 0; i < test.size(); ++i) {
         if (ws.checkForPage(test[i]) == false) pageFaultCounterWS++;
 
@@ -86,7 +99,8 @@ int main(int argc, char* argv[]){
     cout <<"######################"<<endl;
     cout <<"#####Test Results#####"<<endl;
     cout <<"######################"<<endl;
-    cout << "Page string: " << test << endl << endl;
+    cout << "Page string: '" << test << "'" << endl;
+    cout << "Number slots in page table: " << numOfPages << endl << endl;
     cout <<"FIFO"<<endl;
     cout <<"-------------------------"<<endl;
     cout << "Execution time for FIFO algorithm: " << endFIFO << " milliseconds." << endl;

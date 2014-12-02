@@ -16,10 +16,19 @@ fi
 mainFile=`ls virtualPaging.cpp`
 if [[ $mainFile ]];then
 	g++ -o virtualPaging.out -O $mainFile
-	if [[ $1 ]];then
-		./virtualPaging.out $1
+	rc=$?
+	if [[ $rc -ne 0 ]];then
+		exit
 	else
-		./virtualPaging.out
+		if [[ $1 ]];then
+			if [[ $2 ]];then
+				./virtualPaging.out $1 $2
+			else
+				./virtualPaging.out $1
+			fi
+		else
+			./virtualPaging.out
+		fi
 	fi
 	exit $?
 else
