@@ -38,63 +38,54 @@ that value that is furthest from the current. That value is to be deleted.
   int getFurthest(void){
     int furthestaway; //keeps track of current index of the furthest page
     for (int i = 0; i < getSize(); i ++) {
-    for (int z = loc + 1; z < StringSize - loc; z ++) {
-//compares the value
-    if (OPTTable[i].getName() == OPTTableString[z].getName()) { //I need to compare with each value that is currently ahead of its location. On the list. Is there a simple way of doing this?
-      Value[i] = z; //If positive, this should store how far the next similar value is from current.
-      break;
+      for (int z = loc + 1; z < StringSize; z ++) {
+          //compares the value
+        if (OPTTable[i].getName() == OPTTableString[z].getName()) { //I need to compare with each value that is currently ahead of its location. On the list. Is there a simple way of doing this?
+          Value[i] = z-loc; //If positive, this should store how far the next similar value is from current.
+          break;
+        }
+        else{
+          Value[i] = StringSize + 1; //If no value matches, returns the highest possible size value. Thus it will be replaced.
+        }
+      }
     }
-    else{
-      Value[i] = StringSize + 1; //If no value matches, returns the highest possible size value. Thus it will be replaced.
-    }
-  }
-}
-//Compare each value in the array and then figure out which one is furthest away. It will then return the one that is and replace it.
-  for (int i = 1; i < getSize(); i ++){
-    furthestaway = 0;
+    furthestaway = -1;
+  //Compare each value in the array and then figure out which one is furthest away. It will then return the one that is and replace it.
+  for (int i = 0; i < getSize(); i ++){
       if (furthestaway < Value[i]){
         furthestaway = i;
-        i++;
       }
-      else
-        i++;
     }
     return furthestaway;
   }
 
-void getstringsize(int string){
-  StringSize = string;
+  void getstringsize(int string) {
+    StringSize = string;
   }
 
-void getlocation(int location){
-  loc = location;
+  void stringpage(char page){
+    for (int i = g; i < StringSize; i ++){
+      OPTTableString[i].setName(page);
+      break;
+      }
+    g = g + 1;
   }
 
-void stringpage(char page){
-  for (int i = g; i < StringSize; i ++){
-    OPTTableString[i].setName(page);
-    break;
+  bool checkForPage(char page, int pos){
+    loc = pos;
+    for (int i = 0; i < getSize(); i ++){
+      if(OPTTable[i].isSet() != true){ //checks whether the page was set or not
+        OPTTable[i].setName(page); //sets name of the page at the table's current index to the name of the page replacing it
+        return false;
+      }
+    if (OPTTable[i].getName() == page){
+      return true;
+      }
     }
-  g = g + 1;
-}
-
-bool checkForPage(char page){
-  for (int i = 0; i < getSize(); i ++){
-    if(OPTTable[i].isSet() != true){ //checks whether the page was set or not
-   //   cout << "Empty page at " << i << " adding page " << page << endl;
-      OPTTable[i].setName(page); //sets name of the page at the table's current index to the name of the page replacing it
-      return false;
-    }
-  if (OPTTable[i].getName() == page){
-   // cout << "Found page " << page << " at pos " << i << endl;
-    return true;
-    }
-  }
- // cout << "Page fault looking for: " << page << endl;
-//changes new index for furthest page, sets value using getFurthest method
-  OPTTable[getFurthest()].setName(page); //replaces furthest page with the needed page
- // cout << "Added " << page << " to " << getFurthest() << " : " << OPTTable[getFurthest()].getName() << endl;
-  return false;
+    int furthest = getFurthest();
+  //changes new index for furthest page, sets value using getFurthest method
+    OPTTable[furthest].setName(page); //replaces furthest page with the needed page
+    return false;
   }
 };
 
