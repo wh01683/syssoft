@@ -19,12 +19,12 @@ This is the test area for the page replacement algorithms. Each algorithm has it
 using namespace std;
 
 int main(int argc, char* argv[]){
-    string alphabet[26] = { "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z" };
-    string test;
+    char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
+    string test="";
     int numOfPages;
+    srand ( time(NULL) );
     if (argc == 2) {
         test = argv[1];
-        cout << "arg1" << endl;
     }
     else if (argc == 3) {
         test = argv[1];
@@ -38,7 +38,8 @@ int main(int argc, char* argv[]){
         int length = rand() % 16 + 5;
         int i;
         for(i=0;i<length; i++){
-            test.append(alphabet[rand() % 9]);
+            char letter = alphabet[rand() % 9];
+            test += letter;
         }
         numOfPages = 4;
     }
@@ -121,4 +122,6 @@ int main(int argc, char* argv[]){
     cout << "Execution time for Working Set algorithm: " << endWS << " milliseconds." << endl;
     cout << "Working Set Page Faults: " << pageFaultCounterWS << endl;
     cout <<" "<<endl;
+
+    return 0;
 }//end main method

@@ -19,7 +19,7 @@ private:
 
     WSPage * WSTable;
     int WSTableSize;
-    int t = 0;
+    int t;
 
 public:
 
