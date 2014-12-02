@@ -32,7 +32,7 @@ public:
 	int leastRecent; //keeps track of current index of the page that occurs the least
 	for (int i = 0; i < getSize(); i ++) {
 	count = 0;
-cout << "location " << locat << endl;
+//cout << "location " << locat << endl;
 	for (int z = 0; z < locat; z ++) {
 //compares the value
 //cout << "nfuTable[i].getName() " << nfuTable[i].getName() << " nfuTableString[z].getName() " << nfuTableString[z].getName() << endl;
@@ -41,7 +41,7 @@ cout << "location " << locat << endl;
 		Value[i] = count;
 		}
 	}
-	cout <<  nfuTable[i].getName() << " has " << Value[i] << 	endl;
+//	cout <<  nfuTable[i].getName() << " has " << Value[i] << 	endl;
 	}
 //Compare each value in the array and then figure out which one occurs the least often. It will then return the one that is and replace it.
 	for (int i = 1; i < getSize(); i ++){
@@ -73,19 +73,19 @@ cout << "location " << locat << endl;
 	int spot;
 		for(current = 0; current < getSize(); current++) {
 		if(nfuTable[current].isSet() != true){ //checks whether the page was set or not
-	cout << "Empty page at " << current << " adding page " << 	page << endl;
+//	cout << "Empty page at " << current << " adding page " << 	page << endl;
 	nfuTable[current].setName(page); //sets name of the page at the table's current index to the name of the page replacing it
 	return false;
 	}
 	if (nfuTable[current].getName() == page){
-	cout << "Found page " << page << " at pos " << current << 	endl;
+//	cout << "Found page " << page << " at pos " << current << 	endl;
 	return true;
 	}
 }
-	cout << "Page fault looking for: " << page << endl;
+//	cout << "Page fault looking for: " << page << endl;
 //changes new index for furthest page, sets value using getFurthest method
 	nfuTable[getLeastRecentPage()].setName(page); //replaces furthest page with the needed page
-	cout << "Added " << page << " to " << getLeastRecentPage() 	<< " : " << nfuTable[getLeastRecentPage()].getName() << endl;
+//	cout << "Added " << page << " to " << getLeastRecentPage() 	<< " : " << nfuTable[getLeastRecentPage()].getName() << endl;
 	return false;
 	}
 };
