@@ -85,17 +85,17 @@ int main(int argc, char* argv[]){
     }
     int endOPT = clock() - startOPT; //time executed
 
-int startNFU = clock();
-NFU nfu(4, test.size());
-nfu.getStringSize(test.size());
-cout << "Testing NFU..." << endl;
-for(std::string::size_type i = 0; i < test.size(); ++i) {
-nfu.stringPage(test[i]); //sets up string to reference future strings
-}
-for(std::string::size_type i = 0; i < test.size(); ++i) {
-nfu.getLocation(i);
-if (nfu.checkForPage(test[i]) == false) {
-pageFaultCounterNFU ++;
+    int startNFU = clock();
+    NFU nfu(4, test.size());
+    nfu.getStringSize(test.size());
+    cout << "Testing NFU..." << endl;
+    for(std::string::size_type i = 0; i < test.size(); ++i) {
+        nfu.stringPage(test[i]); //sets up string to reference future strings
+    }
+    for(std::string::size_type i = 0; i < test.size(); ++i) {
+        nfu.getLocation(i);
+        if (nfu.checkForPage(test[i]) == false) {
+        pageFaultCounterNFU ++;
  //calls location of page fault
 }
 }
