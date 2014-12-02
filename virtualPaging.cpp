@@ -45,12 +45,6 @@ int main(int argc, char* argv[]){
         }
         numOfPages = 4;
     }
-<<<<<<< HEAD
-    test = "abaaceeeadjvhbsdkjfvbhsdkjfvbsdkshdbcasjkdvakjscvhdedbbace";
-    int numRuns = 10;
-=======
-
->>>>>>> 862effa43e07d5ec2620d6bf94004e70484fea38
     int pageFaultCounterLRU = 0;
     int pageFaultCounterFIFO = 0;
     int pageFaultCounterOPT = 0;
@@ -91,7 +85,6 @@ int main(int argc, char* argv[]){
     }
     int endOPT = clock() - startOPT; //time executed
 
-<<<<<<< HEAD
 int startNFU = clock();
 NFU nfu(4, test.size());
 nfu.getStringSize(test.size());
@@ -108,12 +101,9 @@ pageFaultCounterNFU ++;
 }
 
 int endNFU = clock() - startNFU; //time executed
-   int startWS = clock();
-    WorkingSet ws = WorkingSet(4);
-=======
+
     int startWS = clock();
     WorkingSet ws = WorkingSet(numOfPages);
->>>>>>> 862effa43e07d5ec2620d6bf94004e70484fea38
     cout << "Testing WS..." << endl;
     cout << " " << endl;
     for (std::string::size_type i = 0; i < test.size(); ++i) {
